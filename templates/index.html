@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<form action="{{ url_for('hello') }}" method="post">
+  <br>Enter the email address which you'd like to spam:  *<input type="text" name="emailAddress"><br>
+  <br>How many would you like to send?  *<input type="text" name="totalToSend" style="width: 50px"><br>
+  <br>Any particular subject line? <input type="text" name="subjectLine"><br>
+  (Subject lines will be incremented (subject1, subject2 etc),<br>
+  and will default to 'subject' if above box is left blank.)
+
+<br>
+<br>
+<input type="checkbox" name="attachments" value="yes" id="myCheck"  onclick="myFunction()"> Check the box if attachments needed<br>
+
+<p id="text" style="display:none">
+How many attachments per email?  <input type="text" name="attachmentsPerEmail"><br>
+<br>File extension:  <input type="text" name="fileExtension"><br>
+(Leave blank if it doesn't matter, or enter 'mixed' if you want different types)
+<br>
+
+<br>File sizes in KB: Min: <input type="text" name="minFileSize" style="width: 50px"> Max: <input type="text" name="maxFileSize" style="width: 50px"><br>
+(Leave blank if it doesn't matter, file sizes will be <10kb)
+
+</p>
+<br>
+<br>
+
+<input type="submit" value="Submit">
+</form>
+<script>
+function myFunction() {
+    var checkBox = document.getElementById("myCheck");
+    var text = document.getElementById("text");
+    if (checkBox.checked == true){
+        text.style.display = "block";
+    } else {
+       text.style.display = "none";
+    }
+}
+</script>
+
+
+</body>
+</html>
