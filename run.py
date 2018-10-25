@@ -15,7 +15,7 @@ def hello():
     if request.method == 'POST':
       result = request.form
       print(result)
-      #SetAttributes(result)
+      SetAttributes(result)
       return render_template("index.html")
     else:
         return render_template('index.html')
@@ -24,13 +24,12 @@ def hello():
 def SetAttributes(result):
     SendTo = result['emailAddress']
     NumberOfEmails = int(result['totalToSend'])
-    if result['subjectLine']:
-        subject = result['subjectLine']
-    else:
-        subject = 'Subject'
+    result['subjectLine']= result.get('subjectline','Subject')
     if result.get('attachments'):
-        attachments.Generate(result['fileExtension'],(result.get('minFileSize',1),result.get('maxFileSize',10)),int(result['attachmentsPerEmail']))
-    SendEmail(SendTo,subject,NumberOfEmails)
+        print("att")
+        attachments.Generate(result['extension'],result.get('minFileSize',1),result.get('maxFileSize',10),int(result['attachmentsPerEmail']))
+    #SendEmail(SendTo,subject,NumberOfEmails)
+    attachments.Remove()
 
 def SendEmail(to,subject,amount):
     smtpObj = smtplib.SMTP('smtp-mail.outlook.com', 587)
