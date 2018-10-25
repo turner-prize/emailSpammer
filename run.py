@@ -42,7 +42,6 @@ def SetAttributes(result):
             maxFileSize = 10
     SendEmail(SendTo,subject,NumberOfEmails)
 
-
 def SendEmail(to,subject,amount):
     smtpObj = smtplib.SMTP('smtp-mail.outlook.com', 587)
     smtpObj.ehlo()
@@ -58,9 +57,6 @@ def SendEmail(to,subject,amount):
         smtpObj.send_message(msg)
 
     smtpObj.quit()
-
-
-
 
 
 
