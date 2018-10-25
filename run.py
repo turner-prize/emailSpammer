@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import smtplib
 from email.message import EmailMessage
 import os
+import attachments
 
 app = Flask(__name__)
 
@@ -13,8 +14,8 @@ EmailPassword = 'PASSWORD'
 def hello():
     if request.method == 'POST':
       result = request.form
-      print (result)
-      SetAttributes(result)
+      print(result)
+      #SetAttributes(result)
       return render_template("index.html")
     else:
         return render_template('index.html')
@@ -28,18 +29,7 @@ def SetAttributes(result):
     else:
         subject = 'Subject'
     if result.get('attachments'):
-        numberOfAttachments = int(result['attachmentsPerEmail'])
-        if result['fileExtension']:
-            if result['fileExtension'] == 'mixed':
-                fileExtension = ['.pdf','.txt','.doc','.csv','.xls','.jpg','.mp3']
-            else:
-                fileExtension  = result['fileExtension']
-        if result['minFileSize']:
-            minFileSize = result['minFileSize']
-            maxFileSize = result['maxFileSize']
-        else:
-            minFileSize = 1
-            maxFileSize = 10
+        attachments.Generate(result['fileExtension'],(result.get('minFileSize',1),result.get('maxFileSize',10)),int(result['attachmentsPerEmail']))
     SendEmail(SendTo,subject,NumberOfEmails)
 
 def SendEmail(to,subject,amount):

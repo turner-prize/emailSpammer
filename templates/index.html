@@ -14,10 +14,17 @@
 <input type="checkbox" name="attachments" value="yes" id="myCheck"  onclick="myFunction()"> Check the box if attachments needed<br>
 
 <p id="text" style="display:none">
-How many attachments per email?  <input type="text" name="attachmentsPerEmail"><br>
-<br>File extension:  <input type="text" name="fileExtension"><br>
-(Leave blank if it doesn't matter, or enter 'mixed' if you want different types)
-<br>
+How many attachments per email? <input type="text" name="attachmentsPerEmail"><br>
+<br>File extension:  <select name="extension">
+								<option value=".pdf">pdf</option>
+								<option value=".txt">txt</option>
+								<option value=".doc">doc</option>
+								<option value=".csv">csv</option>
+								<option value=".xml">xml</option>
+								<option value=".jpg">jpg</option>
+								<option value=".mp3">mp3</option>
+								<option value="mixed">mixed-attachments</option>
+					</select><br>
 
 <br>File sizes in KB: Min: <input type="text" name="minFileSize" style="width: 50px"> Max: <input type="text" name="maxFileSize" style="width: 50px"><br>
 (Leave blank if it doesn't matter, file sizes will be <10kb)
