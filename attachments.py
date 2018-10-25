@@ -25,4 +25,5 @@ def Generate(fExt,minfSize,maxfSize,noOfAttachments):
     GenerateAttachments(fExt,minfSize,maxfSize,noOfAttachments)
 
 def Remove():
-    shutil.rmtree('temp')
+    if os.path.isdir('temp'):
+        shutil.rmtree('temp')

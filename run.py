@@ -24,7 +24,7 @@ def hello():
 def SetAttributes(result):
     SendTo = result['emailAddress']
     NumberOfEmails = int(result['totalToSend'])
-    result['subjectLine']= result.get('subjectline','Subject')
+    subject= result.get('subjectline','Subject')
     if result.get('attachments'):
         print("att")
         attachments.Generate(result['extension'],result.get('minFileSize',1),result.get('maxFileSize',10),int(result['attachmentsPerEmail']))
